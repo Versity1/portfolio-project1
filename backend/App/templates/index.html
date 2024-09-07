@@ -45,7 +45,9 @@
       <!-- desktop header starts here -->
     <div class="header">
         <div class="logo">
-            <h2 class="mx-5 px-3">Nonyelu</h2>
+          {% for x in Info %}
+            <h2 class="mx-5 px-3">{{ x.title }}</h2>
+          {% endfor %}
         </div>
         <div class="nav mx-5 px-4">
             <ul>
@@ -63,8 +65,11 @@
           <img class="mt-5 pt-2" src="{% static 'assets/images/My_project-1-removebg-preview.png' %}" alt="Chinedu Nonyelu" width="450px" class="animated fadeIn">
         </div>
         <div class="p-2 mb-0">
-          <h1 class="display-4 mx-5 px-5 py-2">Chinedu Nonyelu</h1>
-          <p class="lead mx-5 px-5 py-2">I am a software engineer and aspiring to build innovative solutions for various industries. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus ea harum consequuntur modi quaerat at voluptas iste dolorum tempora sint fugit iure, numquam doloribus et vel nulla soluta obcaecati cupiditate repellat exercitationem, labore officia corrupti tempore quibusdam. Nesciunt deserunt officia ab minima repellendus iure nulla.</p>
+          {% for x in Info %}
+          <h1 class="display-4 mx-5 px-5 py-2">{{ x.title }}</h1>
+          
+          <p class="lead mx-5 px-5 py-2">{{ x.description }}</p>
+          {% endfor %}
           <a href="#services" class="btn btn-primary">View My Work</a>
         </div>
       </div>
@@ -73,46 +78,20 @@
         <div class="display-2 my-5 p-3">
           <h2 id="services" class="text-light text-center display-2">My Projects</h2>
         </div>
-        <div class="row row-cols-1 row-cols-md-2 g-4">
+        {% for project in Project %}
+        <div class="row row-cols-1">
           <div class="col" id="school">
             <div class="card h-100 animated fadeIn">
-              <img src="{% static 'assets/images/Screenshot 2023-04-26 141847.png' %}" class="card-img-top" alt="...">
+              <img src="{{ project.image.url }}" class="card-img-top" alt="...">
+              
               <div class="card-body">
-                <h5 class="card-title">School Website/App</h5>
-                <p class="card-text">I help develop software applications using various programming languages.</p>
+                <h5 class="card-title">{{ project.title }}</h5>
+                <p class="card-text">{{ project.description }}</p>
               </div>
             </div>
           </div>
-          <div class="col" id="">
-            <div class="card h-100 animated fadeIn">
-              <img src="{% static 'assets/images/Screenshot 2023-04-26 134721.png' %}" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Payment services app</h5>
-                <p class="card-text">I help develop software applications using various programming languages.</p>
-              </div>
-            </div>
-          </div>
-          <!-- second services card -->
-          <div class="col" id="pos">
-              <div class="card h-100 animated fadeIn">
-                <img src="{% static 'assets/images/Screenshot 2024-09-07 010334.png' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">POS Application</h5>
-                  <p class="card-text">I help develop software applications using various programming languages.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col" id="ecommerce">
-              <div class="card h-100 animated fadeIn">
-                <img src="{% static 'assets/images/Screenshot 2024-09-07 010216.png' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">E-Commerce Website</h5>
-                  <p class="card-text">I help develop software applications using various programming languages.</p>
-                </div>
-              </div>
-            </div>
-        </div>
-      </div>
+          {% endfor %}
+          
       <!-- contact form -->
        <div id="contact" class="display-2 mt-5 pt-3 text-light">Contact Me</div>
       <form class="px-4 mx-5" action="" method="post">

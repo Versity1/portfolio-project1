@@ -4,11 +4,10 @@ from .models import info, Projects
 
 # Create your views here.
 def home(request):
-    # info = info.objects.all()
     Info = info.objects.all()
-    project = Projects.objects.all
+    project = Projects.objects.all()  # Fix: Call the queryset with ()
     context = {
-        'Info': info,
-        'project': Projects,
-        }
+        'Info': Info,
+        'Project': project,  # Fix: Use the correct variable here (project)
+    }
     return render(request, "index.html", context)
